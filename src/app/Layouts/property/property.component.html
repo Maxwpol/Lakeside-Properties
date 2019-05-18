@@ -1,0 +1,39 @@
+<div class="row mt-2">
+  <div class="col-md-2">
+<div class="form-group">
+  <select class="form-control" [(ngModel)]="location" name="location" (change)="Filter()">
+    <option value="">Location</option>
+    <option value="">All</option>
+    <option *ngFor="let loc of locations" [value]="loc">{{loc}} </option>
+  </select>
+</div>
+<div class="form-group">
+  <select class="form-control" [(ngModel)]="category" name="location" (change)="Filter()">
+    <option value="">Category</option>
+    <option value="">All</option>
+    <option *ngFor="let cat of categories" [value]="cat">{{cat}} </option>
+  </select>
+</div>
+<div class="form-group">
+  <select class="form-control" [(ngModel)]="room" name="rooms" (change)="Filter()">
+    <option value="">Rooms</option>
+    <option value="">All</option>
+    <option *ngFor="let rom of rooms" [value]="rom">{{rom}} </option>
+  </select>
+</div>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-3 p-2" *ngFor="let property of properties">
+        <div class="card">
+            <img *ngIf="property.photos.length>0" class="card-img-top" [src]="GetSrc(property)" alt="">
+          <div class="card-body">
+              <h4 class="card-title">{{property.title}}</h4>
+              <p class="card-text">{{property.description}}</p>
+            <p class="text-center text-info">Ksh. {{property.price  | number:'2.'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
